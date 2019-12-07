@@ -1,0 +1,41 @@
+<div class="blog-sider">
+    <div class="sider-items">
+        <div class="sider-title">
+            <h1>搜索</h1>
+        </div>
+        <div class="sider-content">
+<!--            <form action="__URL__/search" method="post">-->
+            <form action="{:url('/blog/search')}" method="post">
+                <input class="input-text mr5" type="text" name="keywords" placeholder="请输入关键字搜索" id=""/><input class="btn" type="submit" value="搜索"/>
+            </form>
+        </div>
+    </div>
+    <!--/搜索-->
+    <div class="sider-items">
+        <div class="sider-title">
+            <h1>文章分类</h1>
+        </div>
+        <div class="sider-content">
+            <ul class="art-list clearfix">
+                {:widget('Common/blogSort')}
+            </ul>
+        </div>
+    </div>
+    <!--/文章分类-->
+    <div class="sider-items">
+        <div class="sider-title">
+            <h1>文章归档</h1>
+        </div>
+        <div class="sider-content">
+            <ul class="files-list">
+                {:widget('Common/Date')}
+            </ul>
+        </div>
+    </div>
+    <!--／文章归档-->
+    <div class="sider-items">
+        <div class="sider-content">
+            <p><a class="qq-link" target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=1e4f2bae5a94aa0e7a99ff17513569347bb87994ed793cf323bf1c26039b5163"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="UI设计交流 - 2群" title="UI设计交流 - 2群"></a><a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=fBYTCRUfFzwNDVIfExE" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_02.png"/></a></p>
+        </div>
+    </div>
+</div>

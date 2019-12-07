@@ -1,0 +1,71 @@
+{extend name="Base/layout" /}
+{block name="main"}
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font">&#xe000;</i><a href="__GROUP__">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"></span></div>
+</div>
+<div class="search-wrap">
+    <div class="search-content">
+        <form action="{:url('blogIndex')}" method="post">
+            <table class="search-tab">
+                <tr>
+                    <th width="10"></th>
+                    <td><input class="common-text" type="text" placeholder="请输入查询关键字..." name="keywords" value="{notempty name='keywords'}{$keywords}{/notempty}" id=""/></td>
+                    <td><input class="btn btn-primary btn2" name="sub" type="submit" value="查询" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<div class="result-wrap" id="designComment">
+    <form name="myform" id="myform" method="post">
+        <div class="comment-title">
+            <div class="result-list comment-tab clearfix">
+                <a class="comment-link" href="{:url('index')}"><i class="icon-font">&#xe04f;</i>作品评论</a>
+                <a class="blog-link on" href="{:url('blogindex')}"><i class="icon-font">&#xe01a;</i>博客评论</a>
+            </div>
+        </div>
+        <div class="result-content">
+            <div class="res-items">
+                <table class="result-tab" width="100%">
+                    <tr>
+                        <th width="5%" class="tc"><input class="allChoose" type="checkbox" name="" id=""/></th>
+                        <th>评论人</th>
+                        <th>内容</th>
+                        <th></th>
+                        <th>主题</th>
+                        <th>操作</th>
+                    </tr>
+                    {volist name="commentList" id="vo"}
+                        {if condition="$vo.module eq 'blog'"}
+                            <tr {if condition="$vo.toUserName eq ''"}class="even-tr"{/if}>
+                            <td class="tc"><input type="checkbox" name="id[]" value="{$vo['id']}" id=""/></td>
+                            <td>
+                                <span class="visitor-img"><img src="__PUBLIC__/uploads/visitor.png" title="visitor" width="32" height="32" alt=""/></span>
+                                <span class="visitor-info">
+                                    <i>{$vo.username|mb_substr=0,10}</i> <br> <i class="visitor-email">{$vo.email}</i>
+                                </span>
+                            </td>
+                            <td>{$vo.content|mb_substr=0,30}</td>
+                            <td>
+                                提交于: {$vo.inputtime|date="Y-m-d H:i:s"}
+                                {if condition="$vo['toUserName'] neq ''"}&nbsp;|&nbsp;回复给&nbsp;{$vo['toUserName']}{/if}
+                            </td>
+                            <td></td>
+                            <td>
+                                <a class="link-update" href="./reply?id={$vo['id']}">回复</a>
+                                <a class="link-del" href="./del?id={$vo['id']}">删除</a>
+                            </td>
+                            </tr>
+                        {/if}
+                    {/volist}
+                </table>
+                <div class="result-list mt10">
+                    <!--<a href="javascript:void(0)" id="batchDel"><i class="icon-font"></i>批量删除</a>-->
+                </div>
+                <div class="list-page">{$page|raw}</div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--/container-->
+{/block}

@@ -1,0 +1,3 @@
+{volist name="bloglist" id="vo"}
+    <li><a title="{$vo.colTitle}" href="{:url('/cat/'.$vo['colId'])}">{$vo.colTitle}</a><i class="art-num">[{$vo.total}]</i></li>
+{/volist}

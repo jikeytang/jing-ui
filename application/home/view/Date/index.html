@@ -1,0 +1,42 @@
+{include file="Public/header"}
+<section class="works-container wrap-box">
+    <div class="wroks-inner clearfix">
+        <div class="blog-main">
+            {volist name="list" id="list"}
+                <div class="main-items">
+                    <div class="blog-title">
+                        <h1><a title="{$list.title}" class="title-link anim-link" href="{:url('/blog/'.$list['id'])}">{$list.title}</a></h1>
+                    </div>
+                    <div class="blog-title-info">
+                        <div class="title-info-list clearfix">
+                            <a class="title-date" href="{:url('/blog/'.$list['id'])}">{$list.inputtime|date="Y-m-d H:i:s"}</a>
+                            <a class="title-sort" href="{:url('/cat/'.$list['Columns']['colId'])}">{$list.Columns.description}</a>
+                            <a class="title-clicks" href="{:url('/blog/'.$list['id'])}">{$list.clicks}</a>
+                            <a class="title-cmt" href="{:url('/blog/'.$list['id'])}">{$list.Comment|count}条评论</a>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        {if condition="$list.smallimg neq ''"}
+                            <div class="blog-blumb">
+                                <a class="blumb-link" href="{:url('/blog/'.$list['id'])}"><img width="100%" src="__PUBLIC__/uploads/{$list.smallimg}" alt=""/></a>
+                            </div>
+                        {/if}
+                        <div class="blog-txt">
+                            {$list.description}
+                        </div>
+                        <div class="blog-all">
+                            <a class="all-link" href="{:url('/blog/'.$list['id'])}">阅读全文 &gt;</a>
+                        </div>
+                    </div>
+                </div>
+            {/volist}
+            <div class="use-page blog-page">{$page|raw}</div>
+        </div>
+        <!--/main-->
+        {include file="Public/blogSider"}
+        <!--/sider-->
+    </div>
+</section>
+{include file="Public/footer"}
+</body>
+</html>

@@ -1,0 +1,173 @@
+{include file="Public/header"}
+<section class="works-container wrap-box">
+    <div class="wroks-inner">
+        <div class="wroks-title clearfix">
+            <h1 title="{$columns.colTitle}"><a href="__ROOT__/design/">Design</a><i class="ffs work-gt">&gt;</i><a href="__ROOT__/design/designlist/{$columns.colId}/{$columns.colTitle}/{$columns.description}">{$columns.colTitle}</a><i class="ffs work-gt">&gt;</i><i class="design-map-name">{$vo.title}</i></h1><i class="wroks-title-desc"></i>
+        </div>
+        <div class="design-title none">
+            <h1 title="{$vo.title}">{$vo.title}</h1>
+        </div>
+        <div class="design-content">
+            {$vo.content|raw}
+        </div>
+        <div class="alipay-txt design-ali clearfix none">
+            <h1>如果觉得对您的学习有所帮助，请扫描以下的二维码进行捐赠：</h1>
+            <div class="pay-img"><img src="__IMG__/common/jing-pay.jpg" alt=""/></div>
+        </div>
+        <div class="design-items">
+            <!--<a class="design-support" href="javascript:void(0)">OK<i>[ 22 ]</i></a>-->
+        </div>
+        <div class="blog-taginfo clearfix">
+            <div class="blog-tag">
+                <p>标签:</p>
+                <p>转载请注明来源: JingBlog - <i class="blog-titlename">《{$vo.title}》</i></p>
+                <!--<p>本文链接地址:  {:url('/blog/'.$vo['id']).'@blog.thinkphp.cn'}</p>-->
+                <p>本文链接地址: <i class="blog-url">{$Think.config.site.domain}/design/{$vo['id']}.html</i></p>
+            </div>
+            <div class="blog-share">
+                <div class="bdsharebuttonbox" data-tag="share_1">
+                    <a class="bds_more" data-cmd="more"></a>
+                    <a class="bds_tsina" data-cmd="tsina"></a>
+                    <a class="bds_tqq" data-cmd="tqq"></a>
+                    <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+                    <a class="bds_baidu" data-cmd="baidu"></a>
+                    <a class="bds_renren" data-cmd="renren"></a>
+                </div>
+                <a class="blog-ok" data-userid="{$vo.id}" href="javascript:void(0)"><i class="blog-support">赞</i><i class="blog-oknum">{$vo.likes}</i></a>
+            </div>
+        </div>
+        <script>
+            window._bd_share_config = {
+                common : {
+                    bdText : '{$vo.title}',
+                    bdDesc : '{$vo.title}',
+                    bdUrl : '{$Think.config.site.domain}/design/{$vo["id"]}'
+                },
+                share : [{
+                    "bdSize" : 24
+                }]
+            }
+            with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+        <div class="blog-comment design-comment">
+            <div class="blog-tips-info"></div>
+            <form id="form1" name="form1">
+                <div class="comment-info-main clearfix">
+                    <div class="comment-head">
+                        <div class="comment-headimg">
+                            <img width="50" height="50" src="__PUBLIC__/uploads/visitor.png" id="gravatarView" />
+                            <input type="hidden" name="headimg" id="gravatarInput" />
+                        </div>
+                    </div>
+                    <div class="comment-userinfo">
+                        <ul class="comment-wrap">
+                            <li>
+                                <input class="input-text" type="text" placeholder="您的昵称" size="70" name="username" id="author"/><i class="require-red">*</i>
+                            </li>
+                            <li>
+                                <input class="input-text" type="text" placeholder="您的邮箱" size="70" name="email" id="email"/><i class="require-red">*</i>
+                                <i class="input-after"><a href="/blog/37" target="_blank">了解Gravatar</a></i>
+                            </li>
+                            <li>
+                                <input class="input-text" type="text" placeholder="您的主页" size="70" name="url" id="url"/>
+                            </li>
+                            <li>
+                                <textarea class="common-text blog-text" placeholder="您的评论内容" name="content" id="content" cols="30" rows="10"></textarea><i class="require-red">*</i>
+                            </li>
+                            <li>
+                                <input class="input-text input-code" placeholder="验 证 码" type="text" name="verify" size="4" id="verify"/>
+                                <img id="verifyImg" class="cp" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?time='+Math.random();" alt="点击刷新验证码" title="点击刷新验证码" />
+                            </li>
+                            <li>
+                                <input type="hidden" name="bid" value="{$vo.id}" id="nid"/>
+                                <input type="hidden" name="module" value="design"/>
+                                <span class="comment-btn"><input class="btn blog-btn" id="sendMsg" type="submit" value="发表"/></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="comment-list-wrap">
+            <ul class="comment-list">
+                {volist name="commentList" id="vo"}
+                    {if condition="$vo.pid eq 0"}
+                        <li>
+                            <div class="comment-headimg"><a href="{$vo.url}" title="{$vo.username|strip_tags}" target="_blank"><img width="44" height="44" src="{$vo.headimg|strip_tags}" alt="{$vo.username|strip_tags}"/></a></div>
+                            <div class="comment-main">
+                                <div class="comment-name clearfix">
+                                    <div class="comment-user">
+                                        <h1>{$vo.username|strip_tags}</h1>
+                                    </div>
+                                    <div class="comment-revert">
+                                        <time class="comment-date">{$vo.inputtime|date="Y-m-d H:i:m"}</time>
+                                        <!--<a href="javascript:void(0)" class="comment-replay">回复<i class="bot-sign"></i></a>-->
+                                    </div>
+                                </div>
+                                <div class="comment-content">
+                                    {$vo.content|strip_tags}
+                                </div>
+                                {if condition="$vo.toUser neq ''"}
+                                    {volist name="vo.toUser" id="sub"}
+                                        <div class="reply-items clearfix">
+                                            <div class="reply-headimg"><a href="__ROOT__/about" title="{$sub.username|strip_tags}" target="_blank"><img  width="44" height="44" src="__PUBLIC__/uploads/h.jpg" alt="{$sub.username|strip_tags}"/></a></div>
+                                            <div class="reply-main">
+                                                <div class="commet-name clearfix">
+                                                    <div class="comment-user">
+                                                        <h1>{$sub.username|strip_tags}</h1>
+                                                    </div>
+                                                    <div class="comment-revert">
+                                                        <time class="comment-date">{$sub.inputtime|date="Y-m-d H:i:m"}</time>
+                                                        <!--<a href="javascript:void(0)" class="comment-replay">回复<i class="bot-sign"></i></a>-->
+                                                    </div>
+                                                </div>
+                                                <div class="reply-content">
+                                                    {$sub.content|strip_tags}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/volist}
+                                {/if}
+                            </div>
+                        </li>
+                    {/if}
+                {/volist}
+                <li class="none">
+                    <div class="comment-headimg"><img src="" alt=""/></div>
+                    <div class="comment-main">
+                        <div class="comment-name clearfix">
+                            <div class="comment-user">
+                                <h1>独孤求败</h1><time class="comment-date">2013.10.15</time>
+                            </div>
+                            <div class="comment-revert">
+                                <a href="javascript:void(0)" class="comment-replay">回复<i class="bot-sign"></i></a>
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                            <p>这里才是回复的内容</p>
+                        </div>
+                        <div class="reply-items clearfix">
+                            <div class="reply-headimg"><img src="" alt=""/></div>
+                            <div class="reply-main">
+                                <div class="commet-name clearfix">
+                                    <div class="comment-user">
+                                        <h1>独孤求败</h1><time class="comment-date">2013.10.15</time>
+                                    </div>
+                                    <div class="comment-revert">
+                                        <a href="javascript:void(0)" class="comment-replay">回复<i class="bot-sign"></i></a>
+                                    </div>
+                                </div>
+                                <div class="reply-content">
+                                    <p>这里才是回复的回复的内容</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{include file="Public/footer"}
+</body>
+</html>

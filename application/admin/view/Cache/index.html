@@ -1,0 +1,28 @@
+{extend name="Base/layout" /}
+{block name="main"}
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font">&#xe000;</i><a href="__GROUP__">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"></span></div>
+</div>
+<div class="result-wrap">
+    <div class="config-items">
+        <div class="result-content">
+            <table class="insert-tab" width="100%">
+                <tr>
+                    <th width="15%">清空所有系统缓存</th>
+                    <td><input class="btn btn-success btn10" onclick="location.href='__GROUP__/Cache/del?type=1'" value="清空" type="button"></td>
+                </tr>
+                <tr>
+                    <th>清空文件缓存目录</th><td><input class="btn btn-success btn10" onclick="location.href='__GROUP__/Cache/del?type=2'" value="清空" type="button"></td>
+                </tr>
+                <tr>
+                    <th>清空数据目录</th><td><input class="btn btn-success btn10" onclick="location.href='__GROUP__/Cache/del?type=3'" value="清空" type="button"></td>
+                </tr>
+                <tr>
+                    <th>清空模版缓存</th><td><input class="btn btn-success btn10" onclick="location.href='__GROUP__/Cache/del?type=4'" value="清空" type="button"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/container-->
+{/block}

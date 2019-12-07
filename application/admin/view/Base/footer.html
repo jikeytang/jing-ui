@@ -1,0 +1,23 @@
+<script type="text/javascript">
+    var PUBLIC = '__PUBLIC__';
+    var URL = '__URL__';
+</script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/init/works.init.js"></script>
+<script type="text/javascript" src="__PUBLIC__/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+            cssPath : '__PUBLIC__/kindeditor/plugins/code/prettify.css',
+            uploadJson : '__PUBLIC__/kindeditor/php/upload_json.php',
+            fileManagerJson : '__PUBLIC__/kindeditor/php/file_manager_json.php',
+            allowFileManager : true,
+            afterCreate : function() {
+            }
+        });
+//        prettyPrint();
+    });
+</script>
+</body>
+</html>

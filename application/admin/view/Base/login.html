@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>『Jing』后台管理</title>
+    <link href="__PUBLIC__/admin/css/admin_login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="admin_login_wrap">
+    <h1>后台管理</h1>
+    <div class="adming_login_border">
+        <div class="admin_input">
+            <form action="{:url('checkLogin')}" method="post">
+                <ul class="admin_items">
+                    <li>
+                        <label for="user">用户名：</label>
+                        <input type="text" name="username" id="user" class="admin_input_style" />
+                    </li>
+                    <li>
+                        <label for="pwd">密码：</label>
+                        <input type="password" name="pwd" id="pwd" class="admin_input_style" />
+                    </li>
+                    <li>
+                        <label for="verify">验证码：</label>
+                        <div class="code-wrap clearfix">
+                            <div class="code-in">
+                                <input type="text" name="verify" id="verify" class="admin_input_style" />
+                                <img id="verifyImg" class="cp verify-img" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?time='+Math.random();" alt="点击刷新验证码" title="点击刷新验证码" />
+                            </div>
+                            <div class="code-submit">
+                                <input type="submit" tabindex="3" value="提交" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <p class="admin_copyright"><a tabindex="5" href="__ROOT__">返回首页</a> &copy; 2014 Powered by <a href="#" target="_blank">豪情</a></p>
+</div>
+<script type="text/javascript" src="__js__/libs/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+</script>
+</body>
+</html>

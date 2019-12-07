@@ -1,0 +1,47 @@
+{include file="Public/header"}
+<section class="design-container design-outer">
+    <div class="wroks-inner">
+        {volist name="list" id="first"}
+        <div class="wroks-items">
+            <div class="wroks-title clearfix">
+                <h1 id="{$first.colTitle|strtolower}"><a class="works-more-title" href="__ROOT__/design/designlist/{$first.colId}/{$first.colTitle}/{$first.description}" title="{$first.colTitle}" target="_blank">{$first.colTitle}</a></h1><i class="wroks-title-desc">{$first.description}</i>
+                <div class="works-more-wrap"><a class="works-more-link" href="__ROOT__/design/designlist/{$first.colId}/{$first.colTitle}/{$first.description}" title="more" target="_blank"><i class="ffs">&gt;&gt;</i></a></div>
+                <input type="hidden" value="{$first.colTitle}" name="designTitle" />
+                <input type="hidden" value="{$first.description}" name="designDesc" />
+            </div>
+            <div class="wroks-content">
+                <ul class="wroks-list clearfix">
+                    {if condition="$first['works'] neq ''"}
+                        {volist name="first['works']" id="vo"}
+                        <li>
+                            <div class="wroks-img-wrap">
+                                <a class="wroks-img-link" title="{$vo.title}" href="{:url('/design/' . $vo['id'])}"><img src="__PUBLIC__/uploads/{$vo['smallimg']}" alt=""/></a>
+                                <div class="wroks-admin-info">
+                                    <div class="wroks-img-title">
+                                        <a class="works-title-link" title="{$vo.title}" href="{:url('/design/' . $vo['id'])}">{$vo.title|mb_substr=0,17,'utf-8'}</a>
+                                    </div>
+                                    <div class="wroks-img-info clearfix">
+                                        <div class="wroks-author">{$vo.inputtime|date="Y-m-d"}</div>
+                                        <div class="img-info-list clearfix">
+                                            <a class="info-views" href="{:url('/design/' . $vo['id'])}">{$vo.clicks}</a>
+                                            <a class="info-comment" href="{:url('/design/' . $vo['id'])}/#form1">{$vo.commentNum}</a>
+                                            <a class="info-sayok" data-userid="{$vo['id']}" href="javascript:void(0)">{$vo.likes}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/volist}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+        {/volist}
+        <div class="use-page design-page"></div>
+    </div>
+</section>
+<section class="design-outer">
+    {include file="Public/footer"}
+</section>
+</body>
+</html>

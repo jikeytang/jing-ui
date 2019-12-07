@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{$Think.config.site.title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="keywords" content="{$Think.config.site.keywords}"/>
+    <meta name="description" content="{$Think.config.site.description}"/>
+    <link type="text/css" rel="stylesheet" href="__CSS__/common.css" />
+    <link type="text/css" rel="stylesheet" href="__CSS__/home.css" />
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+    <script type="text/javascript">
+        if (top.location !== self.location) {
+            top.location=self.location;
+        }
+    </script>
+</head>
+<body>
+<header class="header-wrap">
+    <div class="header-inner wrap-box clearfix">
+        <div class="logo-wrap">
+        </div>
+        <nav class="top-nav-wrap">
+            <ul class="nav-list clearfix">
+                {:widget('Common/nav')}
+            </ul>
+        </nav>
+    </div>
+</header>
+<!--/header-->
+<section class="home-container wrap-box">
+    <div class="home-container-inner">
+        <div id="homeBanner" class="banner-wrap">
+            <div class="swipe-wrap">
+                {volist name="advs" id="vo"}
+                    {if condition="$vo.smallimg neq ''"}
+                        <div class="swipe-items"><a href="{$vo.link}" title="{$vo.title}" target="_blank"><img src="__PUBLIC__/uploads/{$vo.smallimg}" data-thumb="__PUBLIC__/uploads/{$vo.smallimg}" alt="{$vo.title}"/></a></div>
+                    {/if}
+                {/volist}
+            </div>
+            <a id="swipeLeft" title="向前" class="swipe-left" href="javascript:void(0)">&lt;</a>
+            <a id="swipeRight" title="向后" class="swipe-right" href="javascript:void(0)">&gt;</a>
+            <div id="homeBannerNum" class="swipe-num">
+            </div>
+        </div>
+        <!--/banner-->
+        <div class="category-wrap">
+            <ul class="category-list clearfix">
+                <li>
+                    <a href="__ROOT__/design" class="category-on category-gui">GUI<b></b></a>
+                    <i>GUI</i>
+                </li>
+                <li>
+                    <a href="__ROOT__/design#web" class="category-on category-web">WEB<b></b></a>
+                    <i>WEB</i>
+                </li>
+                <li>
+                    <a href="__ROOT__/design#paint" class="category-on category-paint">PAINT<b></b></a>
+                    <i>PAINT</i>
+                </li>
+                <li>
+                    <a href="__ROOT__/design#other" class="category-on category-other">OTHER<b></b></a>
+                    <i>OTHER</i>
+                </li>
+            </ul>
+        </div>
+        <!--/category-->
+        <div class="contact-wrap">
+            <ul class="contact-list clearfix">
+                <li>
+                    <span class="contact-on contact-about"><i>ABOUT</i></span><a class="contact-link contact-link-about" href="__ROOT__/about">ABOUT</a>
+                </li>
+                <li>
+                    <span class="contact-on contact-qq"><i>QQ</i></span><a class="contact-link contact-link-qq" href="__ROOT__/contact">QQ</a>
+                </li>
+                <li>
+                    <span class="contact-on contact-mail"><i>MAIL</i></span><a class="contact-link contact-link-mail" href="__ROOT__/contact">MAIL</a>
+                </li>
+            </ul>
+        </div>
+        <!--/contact-->
+    </div>
+</section>
+<!--/container-->
+{include file="Public/footer"}
+</body>
+</html>

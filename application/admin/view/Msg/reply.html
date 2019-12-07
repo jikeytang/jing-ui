@@ -1,0 +1,50 @@
+{extend name="Base/layout" /}
+{block name="main"}
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font">&#xe000;</i><a href="__GROUP__/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="./"></a><span class="crumb-step">&gt;</span><span>回复留言</span></div>
+</div>
+<div class="result-wrap">
+    <div class="result-content">
+        <form action="{:url('answer')}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+            <table class="insert-tab" width="100%">
+                <tr width="120">
+                    <th>留言者：</th>
+                    <td>{$vo.username}</td>
+                </tr>
+                <tr>
+                    <th>邮箱：</th>
+                    <td>{$vo.email}</td>
+                </tr>
+                <tr>
+                    <th>url：</th>
+                    <td>{$vo.url}</td>
+                </tr>
+                <tr>
+                    <th>时间：</th>
+                    <td>{$vo.inputtime|date="Y-m-d H:i:s"}</td>
+                </tr>
+                <tr>
+                    <th>IP：</th>
+                    <td>{$vo.ip}</td>
+                </tr>
+                <tr>
+                    <th>内容：</th>
+                    <td>{$vo.content}</td>
+                </tr>
+                <tr>
+                    <th>回复：</th>
+                    <td><textarea name="content" id="content" cols="30" style="width:98%;" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="hidden" name="pid" value="{$vo.id}"/>
+                        <input class="btn btn-primary btn6 mr10" type="submit" value="提交"/>
+                        <input class="btn btn6" type="button" onclick="history.go(-1)" value="返回"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}

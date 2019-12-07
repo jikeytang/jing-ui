@@ -1,0 +1,41 @@
+{include file="Public/header"}
+<section class="design-container design-outer">
+    <div class="wroks-inner">
+        <div class="wroks-items">
+            <div class="wroks-title clearfix">
+                <h1 id="{$title}"><a href="__ROOT__/design/">Design</a><i class="ffs work-gt">&gt;</i>{$title}</h1><i class="wroks-title-desc">{$desc}</i>
+                <!--<div class="works-more-wrap">浏览<i class="works-num">11</i></div>-->
+            </div>
+            <div class="wroks-content">
+                <ul class="wroks-list clearfix">
+                    <div class="no-data">{empty name="list"}暂无数据{/empty}</div>
+                    {volist name="list" id="vo"}
+                        <li>
+                            <div class="wroks-img-wrap">
+                                <a class="wroks-img-link" title="{$vo.title}" href="{:url('/design/' . $vo['id'])}"><img width="385" height="286" src="__PUBLIC__/uploads/{$vo['smallimg']}" alt=""/></a>
+                                <div class="wroks-admin-info">
+                                    <div class="wroks-img-title">
+                                        <a class="works-title-link" title="{$vo.title}" href="{:url('/design/' . $vo['id'])}">{$vo.title|mb_substr=0,17,'utf-8'}</a>
+                                    </div>
+                                    <div class="wroks-img-info clearfix">
+                                        <div class="wroks-author">{$vo.inputtime|date="Y-m-d"}</div>
+                                        <div class="img-info-list clearfix">
+                                            <a class="info-views" href="#">{$vo.clicks}</a>
+                                            <a class="info-comment" href="#">{$vo.commentNum}</a>
+                                            <a class="info-sayok" href="#">{$vo.likes}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="design-outer">
+    {include file="Public/footer"}
+</section>
+</body>
+</html>
