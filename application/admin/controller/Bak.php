@@ -17,7 +17,7 @@ class Bak extends Common {
             $tabs[$k]['id'] = $k + 1;
             $tabs[$k]['name'] = $v['Name'];
             $tabs[$k]['engine'] = $v['Engine'];
-            $tabs[$k]['data_length'] = sizecount($v['Data_length']);
+            $tabs[$k]['data_length'] = count($v['Data_length']);
             $tabs[$k]['create_time'] = $v['Create_time'];
             $tabs[$k]['collation'] = $v['Collation'];
         }

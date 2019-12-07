@@ -15,7 +15,7 @@
                         {volist name="first['works']" id="vo"}
                         <li>
                             <div class="wroks-img-wrap">
-                                <a class="wroks-img-link" title="{$vo.title}" href="{:url('/design/' . $vo['id'])}"><img src="__PUBLIC__/uploads/{$vo['smallimg']}" alt=""/></a>
+                                <a class="wroks-img-link" title="{$vo.title}" href="{:url('/design/' . $vo['id'])}"><img src="__PUBLIC__/uploads/design/{$vo['smallimg']}" alt=""/></a>
                                 <div class="wroks-admin-info">
                                     <div class="wroks-img-title">
                                         <a class="works-title-link" title="{$vo.title}" href="{:url('/design/' . $vo['id'])}">{$vo.title|mb_substr=0,17,'utf-8'}</a>

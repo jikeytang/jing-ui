@@ -16,19 +16,8 @@ class Common extends Controller {
     function __construct() {
         parent::__construct();
 
-        session([
-            'prefix'     => '',
-            'type'       => '',
-            'auto_start' => true,
-        ]);
-
-//        check_login(session('username'));
         // 用户权限检查
-
-        if (!session('username') && $this->request->pathinfo() != 'base/login.html') {
-            dump(111);
-//            $this->redirect('Base/login');
-        }
+        check_login(session('username'));
     }
 
     public function _initialize() {
@@ -113,7 +102,7 @@ class Common extends Controller {
         foreach($id as $v){
             if(in_array($module, array('Design', 'About', 'Contact', 'Blog'))){
                 $thumb = $mod->where(array('id' => $v))->column('smallimg');
-                $this->delThumb($thumb);
+                $this->delThumb($thumb[0]);
             }
             
             if(in_array($module, array('Columns'))){
@@ -134,7 +123,7 @@ class Common extends Controller {
     // 删除缩略图片
     public function delThumb($thumb){
         if($thumb !== false){
-            $file = 'Public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $thumb;
+            $file = 'Public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . strtolower($this->getActionName()) . $thumb;
             if(is_file($file)){
                 unlink($file);
             }
@@ -146,7 +135,7 @@ class Common extends Controller {
         // 获取表单上传文件 例如上传了001.jpg
         $file = request()->file($fileKey['0']);
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $file->move('./Public/uploads/' . strtolower($this->getActionName()) );
+        $info = $file->move('./uploads/' . strtolower($this->getActionName()) );
 
         if($info){
             $result['code'] = 1;

@@ -1,0 +1,84 @@
+.banner-wrap{position: relative;overflow: hidden;margin-top:25px;padding:25px 0 40px;border-top:1px solid #e8e3d9;border-bottom:1px solid #e8e3d9;}
+.category-wrap{padding:20px 0 25px;border-bottom:1px solid #e8e3d9;}
+.category-list{margin-right:-30px;overflow:hidden;zoom:1;}
+.category-list li{position:relative;float:left;width:225px;height:131px;line-height:131px;text-align:center;margin-right:17px;font-size:40px;overflow:hidden;cursor:pointer;}
+.category-list li i{float:left;width:100%;font-weight:bold;color:#a4a4a4;background:#ecebe5;}
+/*.category-list li a:hover{background:#dbdbdb;color:#fff;}*/
+.category-on{position:absolute;top:0;left:-210px;width:218px;height:131px;margin-right:7px;line-height:131px;font-size:40px;color:#fff;font-weight:bold;text-align:center;}
+.category-on:hover{color:#fff;}
+.category-on b{position:absolute;right:-14px;top:50%;margin-top:-10px;border-style:solid; border-width:7px; border-color:transparent transparent transparent #ff7020;}
+.category-gui{background:#ff7020;}
+.category-web{background:#ffc320;}
+.category-web b{ border-left-color:#ffc320;}
+.category-paint{background:#51d237;}
+.category-paint b{ border-left-color:#51d237;}
+.category-other{background:#0fa8bf;}
+.category-other b{ border-left-color:#0fa8bf;}
+.contact-wrap{padding:65px 0 25px;border-bottom:1px solid #e8e3d9;}
+.contact-list{margin-right:-80px;overflow:hidden;zoom:1;}
+.contact-list li{position:relative;float:left;width:266px;height:65px;line-height:65px;margin-right:77px;overflow:hidden;cursor:pointer;}
+.contact-list li a,.contact-on i{width:184px;height:100%;padding-left:82px;font-size:29px;text-align:center;color:#d4d4d4;}
+.contact-link{float:left;height:40px;background-image:url(../images/home/contact-icons.png);background-repeat:no-repeat;}
+.contact-link-about{background-position:22px -395px;}
+.contact-link-qq{background-position:22px -538px;}
+.contact-link-mail{background-position:22px -670px;}
+.contact-on{position:absolute;top:58px;left:0;width:100%;height:65px;hdisplay:block;background-image:url(../images/home/contact-bot.png);background-repeat:repeat-y;background-color:#ecebe5;}
+.contact-on i{float:left;color:#5fa743;background-image:url(../images/home/contact-icons.png);background-repeat:no-repeat;}
+.contact-about i{background-position:22px 11px;}
+.contact-qq{background-position:-324px 0;}
+.contact-qq i{background-position:22px -132px;color:#40aabd;}
+.contact-mail{background-position:-648px 0;}
+.contact-mail i{background-position:22px -267px;color:#db9251;}
+/* slide */
+.nivoSlider{position:relative;width:100%;height:auto;overflow:hidden;}
+.nivoSlider img{position:absolute;top:0px;left:0px;max-width:none;}
+.nivo-main-image{display:block !important;position:relative !important;width:100% !important;}
+.nivoSlider a.nivo-imageLink{position:absolute;top:0px;left:0px;width:100%;height:100%;border:0;padding:0;margin:0;z-index:6;display:none;background:white;filter:alpha(opacity=0);opacity:0;}
+.nivo-slice{display:block;position:absolute;z-index:5;height:100%;top:0;}
+.nivo-box{display:block;position:absolute;z-index:5;overflow:hidden;}
+.nivo-box img{display:block;}
+.nivo-caption{position:absolute;left:0px;bottom:0px;background:#000;color:#fff;width:100%;z-index:8;padding:5px 10px;opacity:0.8;overflow:hidden;display:none;-moz-opacity:0.8;filter:alpha(opacity=8);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.nivo-caption p{padding:5px;margin:0;}
+.nivo-caption a{display:inline !important;}
+.nivo-html-caption{display:none;}
+.nivo-directionNav a{position:absolute;top:45%;z-index:9;cursor:pointer;}
+.nivo-prevNav{left:0px;}
+.nivo-nextNav{right:0px;}
+.nivo-controlNav{text-align:center;}
+.nivo-controlNav a{cursor:pointer;}
+.theme-default .nivoSlider{position:relative;background:#fff url(../images/home/loading.gif) no-repeat 50% 50%;margin-bottom:10px;box-shadow:0px 1px 3px 0px #aaa;}
+.theme-default .nivoSlider img{position:absolute;top:0px;left:0px;display:none;width:950px;height:405px;}
+.theme-default .nivoSlider a{border:0;display:block;}
+.theme-default .nivo-controlNav{text-align:center;padding:10px 0 0;}
+.theme-default .nivo-controlNav a{display:inline-block;width:22px;height:22px;background:url(../images/home/bullets.png) no-repeat;text-indent:-9999px;border:0;margin:0 2px;}
+.theme-default .nivo-controlNav a{display:inline-block;width:7px;height:7px;border-radius:5px;background:#cbcbcb;text-indent:-9999px;margin:0 5px;}
+.theme-default .nivo-controlNav a.active{background:#ff5b00;}
+.theme-default .nivo-directionNav a{display:block;width:30px;height:30px;background:url(../images/home/arrows.png) no-repeat;text-indent:-9999px;border:0;opacity:0;-webkit-transition:all 200ms ease-in-out;-moz-transition:all 200ms ease-in-out;-o-transition:all 200ms ease-in-out;transition:all 200ms ease-in-out;}
+.theme-default:hover .nivo-directionNav a{opacity:1;}
+.theme-default a.nivo-nextNav{background-position:-30px 0;right:15px;}
+.theme-default a.nivo-prevNav{left:15px;}
+.theme-default .nivo-caption{font-family:Helvetica,Arial,sans-serif;}
+.theme-default .nivo-caption a{color:#fff;border-bottom:1px dotted #fff;}
+.theme-default .nivo-caption a:hover{color:#fff;}
+.theme-default .nivo-controlNav.nivo-thumbs-enabled{width:100%;}
+.theme-default .nivo-controlNav.nivo-thumbs-enabled a{width:auto;height:auto;background:none;}
+.theme-default .nivo-controlNav.nivo-thumbs-enabled img{display:block;width:120px;height:auto;}
+/* silde */
+.swipe-wrap{ position:relative; width:15000px;}
+.swipe-items{ float:left; position:relative;}
+.swipe-items img{max-width:100%;}
+.swipe-left,.swipe-right{ position:absolute; display:block; width:53px; height:53px; top:50%; margin-top:-26px;transition-duration:0.3s; line-height:53px; color:#333; font-size:38px; font-weight:normal; text-align:center;font-family: serif; z-index:333;background: rgba(255, 255, 255, 0.6);}
+.swipe-left:hover,.swipe-right:hover{background: rgba(255, 255, 255, 0.8); color:#000;}
+.swipe-left{left: 0;}
+.swipe-right{right: 0;}
+.swipe-num{position: absolute;bottom:20px;left: 50%;margin-left: -15px;}
+.swipe-num a{float: left;width:8px;height:8px;border-radius:5px;background:#cbcbcb;text-indent:-9999px;border:0;margin:0 5px;}
+.swipe-num a.active{background:#ff5b00;}
+@media screen and (min-width:320px) and (max-width: 799px) {
+.category-list li{width: 95%;margin: 0 1% 0.5em;}
+.category-list li i{width: 95%;}
+.category-on{width: 100%;left: -565px;}
+.category-on b{display: none;}
+.contact-list li{width: 95%;margin: 0 1% 1em;}
+/*.contact-on{background: none;}*/
+}

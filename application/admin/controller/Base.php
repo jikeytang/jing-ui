@@ -3,13 +3,10 @@
 namespace app\admin\controller;
 
 use think\Controller;
-use think\Config;
 use app\admin\model\User;
 
 
-class Base extends Common {
-
-    protected $user_id;
+class Base extends Controller {
 
     public function index() {
         return $this->fetch();
@@ -17,7 +14,10 @@ class Base extends Common {
 
     public function login() {
         return $this->fetch();
-        // $this->redirect('Index/index');
+    }
+
+    public function isPost() {
+        return request()->isPost();
     }
 
     public function checkLogin() {
@@ -53,16 +53,6 @@ class Base extends Common {
             session('username', $info['username']);
             session('logintime', $info['logintime']);
 
-            $user = new User;
-            $ip = $this->request->ip();
-            $time = time();
-            $data = array();
-            $data['email'] = $info['email'];
-            $data['logintime'] = $time;
-            $data['loginip'] = $ip;
-
-            $user->insert($data);
-//            $this->success('登录成功', 'admin/Index/index');
             $this->success('登录成功', url('/'));
         }
 

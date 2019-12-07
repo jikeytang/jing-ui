@@ -10,7 +10,7 @@ class Design extends Common {
     public function index() {
         $list = model('Columns')->field('colId, colTitle, description')->order('ord asc,colId asc')->where(array('colPid' => 1))->select();
         foreach ($list as $k => $v) {
-            $res = model('Design')->limit(16)->order('ord asc,id asc')->where(array('colId' => $v['colId']))->select();
+            $res = model('Design')->limit(16)->order('ord asc,id desc')->where(array('colId' => $v['colId']))->select();
 
             if (!empty($res)) {
                 foreach ($res as $key => $val) {
