@@ -25,7 +25,7 @@ class Common extends Model {
      */
     public function getCommentList($field, $where='', $pageSize=15){
         $count = $this->field('id')->where($where)->count();
-        $list = $this->field($field)->where($where)->order('bpath,id')->paginate($pageSize);
+        $list = $this->field($field)->where($where)->order('id', 'desc')->paginate($pageSize);
 
         foreach($list as $k => $v){
             $res = $this->where(array('id' => $v['pid']))->column('username');

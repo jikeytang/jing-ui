@@ -120,7 +120,7 @@
                 if(self.checkMsg()){
                     msg = $('<div/>').appendTo('.blog-tips-info').addClass('comment-msg');
                     $.ajax({
-                        url      : './add',
+                        url      : location.href + '/add',
                         type     : 'post',
                         dataType : 'json',
                         data     : form.serialize(),
@@ -308,7 +308,7 @@
                 }
 
                 $.ajax({
-                    url      : './support',
+                    url      : location.href + '/support',
                     type     : 'get',
                     dataType : 'json',
                     data     : 'id=' + userId,

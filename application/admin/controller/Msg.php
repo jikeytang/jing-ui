@@ -43,7 +43,9 @@ class Msg extends Common {
     public function answer(){
         $modelName = $this->getActionName();
         $module = model($modelName);
-        $result = $module->save();
+        $data = input('post.');
+        $data['inputtime'] = time();
+        $result = $module->save($data);
         $this->say($result, $modelName . '/index');
     }
 
