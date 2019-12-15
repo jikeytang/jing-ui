@@ -118,7 +118,7 @@
                                             </div>
                                         </div>
                                         <div class="comment-content">
-                                            {$vo.content|strip_tags}
+                                            {$vo.content|raw}
                                         </div>
                                         {if condition="$vo.toUser neq ''"}
                                             {volist name="vo.toUser" id="sub"}
@@ -169,6 +169,9 @@
     </div>
 </section>
 {include file="Public/footer"}
+<script>
+    var addUrl =  "{:url('blog/add')}";
+</script>
 <a class="fixed-bot rss-icon" href="__ROOT__/feed" target="_blank" title="rss"></a>
 </body>
 </html>

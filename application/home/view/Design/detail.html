@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="comment-content">
-                                    {$vo.content|strip_tags}
+                                    {$vo.content|raw}
                                 </div>
                                 {if condition="$vo.toUser neq ''"}
                                     {volist name="vo.toUser" id="sub"}
@@ -122,7 +122,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="reply-content">
-                                                    {$sub.content|strip_tags}
+                                                    {$sub.content|raw}
                                                 </div>
                                             </div>
                                         </div>
@@ -169,5 +169,9 @@
     </div>
 </section>
 {include file="Public/footer"}
+<script>
+    var addUrl =  "{:url('design/add')}";
+    var supportUrl = "{:url('design/support')}";
+</script>
 </body>
 </html>

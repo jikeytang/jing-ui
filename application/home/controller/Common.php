@@ -94,10 +94,12 @@ class Common extends Controller {
         $_POST['inputtime'] = time();
         $vo                 = $model->create($_POST);
 
-        if (!$vo) {
-            $this->error('数据创建失败！');
+        if ($vo) {
+            $res = [ 'code' => 1, 'data' => $vo, 'msg' => '谢谢支持！' ];
         } else {
-            $this->success($_POST);
+            $res = [ 'code' => 0, 'msg' => '操作失败！' ];
         }
+
+        return json($res);
     }
 }

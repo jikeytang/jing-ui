@@ -28,8 +28,8 @@ class Blog extends Common {
         $comment = model('Comment')->getCommentList("id,username,headimg,inputtime,pid,nid,url,content,path,concat(path,'-',id) as bpath", array('bid' => array('eq', $arr['vo']['id'])));
 
         $blog = model('Blog');
-        $art['prev'] = $blog->getPrevNextArt($arr['vo']['inputtime'], 'prev'); // 上一篇
-        $art['next'] = $blog->getPrevNextArt($arr['vo']['inputtime'], 'next'); // 下一篇
+        $art['prev'] = $blog->getPrevNextArt($id, 'prev'); // 上一篇
+        $art['next'] = $blog->getPrevNextArt($id, 'next'); // 下一篇
 
         $this->assign('art', $art);
         $this->assign('vo', $arr['vo']);
@@ -38,7 +38,7 @@ class Blog extends Common {
     }
 
     public function add(){
-        $this->addData('Comment');
+        return $this->addData('Comment');
     }
 
     public function search(){

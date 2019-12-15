@@ -17,7 +17,7 @@ class Contact extends Common {
     }
 
     public function add(){
-        $this->addData('Msg');
+        return $this->addData('Msg');
     }
 
 }

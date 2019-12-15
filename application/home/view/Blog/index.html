@@ -22,7 +22,7 @@
                             </div>
                         {/if}
                         <div class="blog-txt">
-                            {$vo.description}
+                            {$vo.description|raw}
                         </div>
                         <div class="blog-all">
                             <a class="all-link" href="{:url('/blog/'.$vo['id'])}">阅读全文 &gt;</a>

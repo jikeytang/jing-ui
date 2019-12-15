@@ -14,7 +14,7 @@ use think\Config;
 class Common extends Model {
     public function getCommentList($field, $where='', $pageSize=15){
         $count = $this->field('id')->where($where)->count();
-        $list = $this->field($field)->where($where)->order('bpath,id desc')->select();
+        $list = $this->field($field)->where($where)->order(['bpath', 'id' => 'desc'])->select();
         foreach($list as $k => $v){
             $res = $this->where(array('pid' => $v['id']))->select();
             if(!empty($res)){
@@ -40,20 +40,20 @@ class Common extends Model {
      * @param string $type
      * @return string
      */
-    public function getPrevNextArt($time, $type='prev'){
+    public function getPrevNextArt($id, $type='prev'){
         if($type == 'prev'){
-            $where['inputtime'] = array('gt', $time);
+            $where[] = array('id', '>', $id);
             $ord = 'asc';
         }
         if($type == 'next'){
-            $where['inputtime'] = array('lt', $time);
+            $where[] = array('id', '<', $id);
             $ord = 'desc';
         }
 
-        $list = $this->where($where)->field('title,id')->order('ord asc,inputtime ' . $ord)->find();
+        $list = $this->where($where)->field('title,id')->order('id', $ord)->find();
         if($list){
             $title = $list['title'];
-            $url = "<a title='$title' href='" . url('', array('id' => $list['id'])) . "' target='_blank'>" . mb_substr($title, 0, 22) . "</a>";
+            $url = "<a title='$title' href='" . url('', ['id' => $list['id']]) . "' target='_blank'>" . mb_substr($title, 0, 22) . "</a>";
             return $url;
         } else {
             return '';
@@ -68,6 +68,6 @@ class Common extends Model {
      * @return mixed
      */
     public function getCat($modelName, $modelId) {
-        return $this->field('description')->where(array('modelid' => $modelId, 'colPid' => $modelId))->order('ord desc')->find();
+        return $this->field('description')->where(['modelid' => $modelId, 'colPid' => $modelId])->order('ord', 'desc')->find();
     }
 }

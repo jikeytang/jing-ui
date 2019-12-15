@@ -120,17 +120,18 @@
                 if(self.checkMsg()){
                     msg = $('<div/>').appendTo('.blog-tips-info').addClass('comment-msg');
                     $.ajax({
-                        url      : location.href + '/add',
+                        // url      : location.href + '/add',
+                        url      : addUrl,
                         type     : 'post',
                         dataType : 'json',
                         data     : form.serialize(),
-                        success  : function(obj){
-                            obj.info = '提交成功'
+                        success  : function(res){
+                            res.info = '提交成功'
 
-                            if(obj.code){
-                                var data = obj.msg;
+                            if(res.code){
+                                var data = res.data;
 
-                                msg.html(obj.info);
+                                msg.html(res.info);
 
                                 form[0].reset();
                                 $('#author').focus();
@@ -148,15 +149,15 @@
 
                                 $('<li>' + str + '</li>').prependTo('.comment-list').css({opacity : 0}).fadeTo(800, 1);
                             } else {
-                                msg.html(obj.msg);
+                                msg.html(res.msg);
                             }
 
                             setTimeout(function(){
                                 msg.fadeOut(800).remove();
                             }, 1200);
                         },
-                        error : function(obj){
-                            msg.html(obj.msg);
+                        error : function(err){
+                            msg.html(err.msg);
                         }
                     });
                 }
@@ -202,7 +203,7 @@
               m_url = '';
 
             if (src.indexOf('@') < 0) return false;
-            m_url = 'http://www.gravatar.com/avatar/' + this.md5(src) + '?d=' + w_url + '/Public/uploads/visitor.png&s=45&r=g';
+            m_url = 'http://www.gravatar.com/avatar/' + this.md5(src) + '?d=' + w_url + '/public/uploads/visitor.png&s=45&r=g';
             $('#gravatarView').attr('src', m_url);
             $('#gravatarInput').val(m_url);
         },
@@ -289,7 +290,7 @@
                     yetArr = yetId.split('|');
 
                     for(var i = 0, len = yetArr.length; i < len; i++){
-                        if(userId == yetArr[i]){
+                        if(userId === yetArr[i]){
                             isYet = true;
                         }
                     }
@@ -308,13 +309,15 @@
                 }
 
                 $.ajax({
-                    url      : location.href + '/support',
+                    // url      : location.href + '/support',
+                    url      : supportUrl,
                     type     : 'get',
                     dataType : 'json',
                     data     : 'id=' + userId,
-                    success  : function(msg){
+                    success  : function(res){
                         var ok = null;
-                        if(msg.data == 1){
+
+                        if(res.code){
                             $(that).addClass('blog-yetok');
 
                             if(that.className.indexOf('info-sayok') >= 0){
@@ -323,12 +326,13 @@
                                 ok = $(that).find('.blog-oknum');
                                 ok.html(ok.html() - 0 + 1);
                             }
+                            alert(res.msg);
                         } else {
-                            alert(msg.info);
+                            alert(res.msg);
                         }
                     },
-                    error : function(msg){
-                        alert(msg.info);
+                    error : function(err){
+                        alert(err.msg);
                     }
                 });
 

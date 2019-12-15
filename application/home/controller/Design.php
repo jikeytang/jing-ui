@@ -2,6 +2,8 @@
 
 namespace app\home\controller;
 
+use think\Exception;
+
 class Design extends Common {
     public function _initialize() {
         parent::_initialize();
@@ -28,29 +30,19 @@ class Design extends Common {
     }
 
     public function add() {
-        $this->addData('Comment');
+        return $this->addData('Comment');
     }
 
-    public function designlist($id, $title, $desc) {
+    public function designlist($id, $title, $desc = '') {
         $D = model('Design');
         $where['colId'] = $id;
         $count = $D->field('id')->where($where)->count();
-//        $pageSize = 15;
-//        $page = new Page($count, $pageSize);
 
         $list = $D->field('id, title, inputtime, clicks, likes, smallimg')->where($where)->select();
         foreach ($list as $k => $v) {
             $commentNum = model('Comment')->where(array('bid' => $v['id']))->count();
             $list[$k]['commentNum'] = $commentNum;
         }
-
-        /*
-        $page->setConfig('header', '条');
-        $page->setConfig('prev', '上一页');
-        $page->setConfig('next', '下一页');
-        $page->setConfig('first', '<<');
-        $page->setConfig('last', '>>');
-        */
 
         $this->assign('id', $id);
         $this->assign('title', $title);
@@ -70,30 +62,22 @@ class Design extends Common {
 
         $this->assign('vo', $arr['vo']);
         $this->assign('commentList', $comment['list']);
-//        $this->assign('page', $comment['page']);
         $this->assign('columns', $columns);
         return $this->fetch();
     }
 
     public function support() {
-        $id = $_GET['id'];
+        $id = request()->param('id');
 
-        $model = model('Design');
-        $vo = $model->where(array('id' => $id))->find();
-        $data['likes'] = $vo['likes'] + 1;
+        $res = model('design')->where('id', $id)->setInc('likes');
 
-        //            $data['uid'] = $data['uid'] . '|' . $sid;
-
-        $res = $model->where(array('id' => $id))->save($data);
-
-        if (!$vo) {
-            $this->error('数据创建失败！');
-        }
         if ($res > 0) {
-            $this->ajaxReturn($res, '谢谢支持！', 1);
+            $res = [ 'code' => 1, 'msg' => '谢谢支持！' ];
         } else {
-            $this->error('操作失败!');
+            $res = [ 'code' => 0, 'msg' => '操作失败！' ];
         }
+
+        return json($res);
 
     }
 

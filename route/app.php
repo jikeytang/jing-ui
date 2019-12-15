@@ -34,7 +34,7 @@ return [
     'read/:id'                           => 'read/read',         // 博客详细
     'date/:t'                            => 'date/index',        // 文章归档
     'design/:id'                         => 'design/detail',     // 作品详细
+    'design/designlist/:id/:title'       => 'design/designlist', // 作品列表
     'design/designlist/:id/:title/:desc' => 'design/designlist', // 作品列表
     'contact/add'                        => 'contact/add',       // 联系我们
-    'utils/verify/[:id]'                 => 'utils/verify',      // 联系我们
 ];
