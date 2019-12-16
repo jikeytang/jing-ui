@@ -34,11 +34,12 @@ return [
     'taglib_end'   => '}',
     'tpl_cache' => false,
     'tpl_replace_string'  =>  [
-        '__GROUP__'     => __PUBLIC__ . '/admin.php',
-        '__PUBLIC__'     => __PUBLIC__,
-        '__ROOT__'     => __ROOT__,
-        '__CSS__'        => __PUBLIC__.'/home/css',
-        '__JS__'         => __PUBLIC__.'/home/js',
-        '__IMG__'        => __PUBLIC__.'/home/images',
+        '__GROUP__'  => __PUBLIC__ . '/admin.php',
+        '__PUBLIC__' => __PUBLIC__,
+        '__STATIC__' => __PUBLIC__ . '/static',
+        '__ROOT__'   => __ROOT__,
+        '__CSS__'    => __PUBLIC__ . '/home/css',
+        '__JS__'     => __PUBLIC__ . '/home/js',
+        '__IMG__'    => __PUBLIC__ . '/home/images',
     ]
 ];
