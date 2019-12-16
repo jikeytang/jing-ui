@@ -1,8 +1,8 @@
 ;(function(win, $){
 
-    App.namespace('App.model.home')
+    jing.namespace('jing.model.home')
 
-    $.extend(App.model.home, {
+    $.extend(jing.model.home, {
         init: function () {
             this.setBanner()
             this.navAnim()
@@ -79,9 +79,9 @@
 
 ;(function(win, $){
     
-    App.namespace('App.model.design')
+    jing.namespace('jing.model.design')
 
-    $.extend(App.model.design, {
+    $.extend(jing.model.design, {
         init: function () {
             this.bind()
             this.sendComment()
@@ -282,7 +282,7 @@
                 var that = this;
                 userId = $(this).data('userid');
 
-                var yetId = App.cookie.getCookie('userid'),
+                var yetId = jing.cookie.getCookie('userid'),
                   yetArr = '',
                   isYet = false;
 
@@ -298,10 +298,10 @@
                     if(isYet){
                         alert('谢谢支持,您已赞过~！');
                     } else {
-                        App.cookie.setCookie('userid', yetId + '|' + userId, 1);
+                        jing.cookie.setCookie('userid', yetId + '|' + userId, 1);
                     }
                 } else {
-                    App.cookie.setCookie('userid', userId, 1);
+                    jing.cookie.setCookie('userid', userId, 1);
                 }
 
                 if($(this).hasClass('blog-yetok') || $(this).hasClass('blog-yetok')){
@@ -344,6 +344,6 @@
 }(window, jQuery));
 
 $(function () {
-    App.model.home.init()
-    App.model.design.init()
+    jing.model.home.init()
+    jing.model.design.init()
 });

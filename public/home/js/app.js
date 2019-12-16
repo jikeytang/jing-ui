@@ -5,9 +5,9 @@
  * @info:
  */
 ;(function(win){ // 主开发框架
-    win.App = win.App || {};
+    win.jing = win.jing || {};
 
-    App.namespace = function (name, sep) {
+    jing.namespace = function (name, sep) {
         var s = name.split(sep || '.'),
             d = {},
             o = function (a, b, c) {
@@ -24,9 +24,9 @@
         return d;
     };
 
-    App.namespace('App.cookie');
+    jing.namespace('jing.cookie');
 
-    $.extend(App.cookie, {
+    $.extend(jing.cookie, {
         setCookie : function (name, value, days) {
             var exp = new Date();
             exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);
@@ -43,7 +43,7 @@
         delCookie : function (name) {
             var exp = new Date();
             exp.setTime(exp.getTime() - 1);
-            var cval = App.cookie.getCookie(name);
+            var cval = jing.cookie.getCookie(name);
             if (cval != null) {
                 document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
             }
@@ -54,9 +54,9 @@
 
 // ui
 (function(win, $){
-    App.namespace('App.ui');
+    jing.namespace('jing.ui');
 
-    $.extend(App.ui, {
+    $.extend(jing.ui, {
         // 绑定二级固定菜单
         bindFixedMenu : function(){
             var fixedMenu = $('#yhFixedMenu'),
@@ -70,7 +70,7 @@
             function bindScroll(){
                 var yhLocate = $('.yhLocate');
                 yhLocate.each(function(i, n){
-                    if(App.ui.isView($(this))){
+                    if(jing.ui.isView($(this))){
                         midLink.removeClass('on');
                         midLink.eq(i).addClass('on');
                     }
