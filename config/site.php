@@ -12,7 +12,7 @@
 	'contact' => 'JingJingUi', 
 	'company' => 'JingJingUI', 
 	'phone' => '123456', 
-	'icp' => '哥在香港111', 
+	'icp' => '哥在香港', 
 	'address' => '中国 • 上海', 
 ); 
  ?>
