@@ -53,7 +53,7 @@ class Base extends Controller {
             session('username', $info['username']);
             session('logintime', $info['logintime']);
 
-            $this->success('登录成功', url('/'));
+            $this->success('登录成功', url('/index'));
         }
 
     }

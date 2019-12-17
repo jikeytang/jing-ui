@@ -1,0 +1,52 @@
+{extend name="base/layout" /}
+{block name="main"}
+<div class="crumb-wrap">
+    <div class="crumb-list"><i class="icon-font">&#xe000;</i><a href="__URL__/">首页</a><span class="crumb-step">&gt;</span><a href="__URL__/">广告管理</a><span class="crumb-step">&gt;</span><span>修改作品</span></div>
+</div>
+<div class="result-wrap">
+    <div class="result-content">
+        <form action="__URL__/modify" method="post" id="myform" name="myform" enctype="multipart/form-data">
+            <table class="insert-tab" width="100%">
+                <tr>
+                    <th width="120">分类：</th>
+                    <td>
+                        <select name="" id="">
+                            {empty name="sortList"}<option value="">暂无分类</option>{/empty}
+                            {volist name="sortList" id="sort"}
+                                <option value="">{$sort.colTitle}</option>
+                            {/volist}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>标题：</th>
+                    <td><input class="common-text" type="text" name="title" size="50" value="{$vo.title}"/></td>
+                </tr>
+                <tr>
+                    <th>链接：</th>
+                    <td><input class="common-text" type="text" name="link" size="50" value="{$vo.link}"/></td>
+                </tr>
+                <tr>
+                    <th><i class="require-red">*</i>缩略图：</th>
+                    <td>
+                        {if condition="$vo.smallimg neq ''"}
+                            <img src="__PUBLIC__/uploads/{$vo.smallimg}" alt=""/>
+                            <br>
+                        {/if}
+                        <input type="file" name="smallimg" id=""/>
+                        <input type="hidden" name="smallimg" value="{$vo.smallimg}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="hidden" name="id" value="{$vo.id}"/>
+                        <input class="btn btn-primary btn6 mr10" type="submit" value="提交"/>
+                        <input class="btn btn6" type="button" onclick="history.go(-1)" value="返回"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}

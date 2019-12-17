@@ -1,0 +1,29 @@
+{extend name="base/layout" /}
+{block name="main"}
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font">&#xe000;</i><a href="__GROUP__">首页</a><span class="crumb-step">&gt;</span><span>修改密码</span></div>
+    </div>
+    <div class="search-wrap">
+        <div class="result-wrap">
+            <div class="search-content">
+                <table class="result-tab" width="100%">
+                    <tr>
+                        <th>id</th>
+                        <th>用户名</th>
+                        <th>最后登录时间</th>
+                        <th>最后登录IP</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.username}</td>
+                        <td>{$vo.logintime|date="Y-m-d H:i:s"}</td>
+                        <td>{$vo.loginip}</td>
+                        <td><a href="__GROUP__/base/password">修改密码</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+<!--/main-->
+{/block}

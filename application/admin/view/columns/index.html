@@ -1,0 +1,51 @@
+{extend name="base/layout" /}
+{block name="main"}
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font">&#xe000;</i><a href="__GROUP__">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"></span><span class="crumb-step">&gt;</span><span>作品分类</span></div>
+    </div>
+    <div class="result-wrap">
+        <form name="myform" id="myform" method="post" modelName="columns">
+            <div class="columns-title">
+                <div class="result-list comment-tab clearfix">
+                    <a href="{:url('index')}" class="comment-link on"><i class="icon-font"></i>作品分类</a>
+                    <a href="{:url('blogindex')}" class="blog-link"><i class="icon-font"></i>博客分类</a>
+                </div>
+            </div>
+            <div class="result-title">
+                <div class="result-list">
+                    <a href="{:url('insert')}"><i class="icon-font">&#xe026;</i>新增分类</a>
+                    <a id="updateOrd" href="javascript:void(0)"><i class="icon-font">&#xe00a;</i>更新排序</a>
+                </div>
+            </div>
+            <div class="result-content">
+                <table class="result-tab" width="100%">
+                    <tr>
+                        <th width="5%">排序</th>
+                        <th>catId</th>
+                        <th>栏目名称</th>
+                        <th>所属模型</th>
+                        <th>数据量</th>
+                        <th>操作</th>
+                    </tr>
+                    {volist name="catArray" id="vo"}
+                        <tr>
+                            <td>
+                                <input type="hidden" name="ids[]" value="{$vo['colId']}"/>
+                                <input class="common-input sort-input" type="text" name="ord[]" value="{$vo['ord']}"/>
+                            </td>
+                            <td>{$vo['colId']}</td>
+                            <td>{$vo['space']|raw}{$vo['colTitle']}</td>
+                            <td>{$vo['model']}</td>
+                            <td>{$vo['total']}</td>
+                            <td>
+                                <a class="link-update" href="{:url('edit')}?id={$vo['colId']}">修改</a>
+                                <a class="link-del" href="{:url('del')}?id={$vo['colId']}">删除</a>
+                            </td>
+                        </tr>
+                    {/volist}
+                </table>
+            </div>
+        </form>
+    </div>
+<!--/container-->
+{/block}

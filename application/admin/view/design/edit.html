@@ -1,0 +1,59 @@
+{extend name="base/layout" /}
+{block name="main"}
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font">&#xe000;</i><a href="__GROUP__">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="./"></a><span class="crumb-step">&gt;</span><span>修改作品</span></div>
+    </div>
+    <div class="result-wrap">
+        <div class="result-content">
+            <form action="{:url('modify')}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+
+                <table class="insert-tab" width="100%">
+                    <tr>
+                        <th width="120">分类：</th>
+                        <td>
+                            <select name="colId" id="colId">
+                                {empty name="sortList"}<option value="">暂无分类</option>{/empty}
+                                {volist name="sortList" id="sort"}
+                                    {if condition="$sort.colId gt '1'"}
+                                        <option value="{$sort.colId}" {eq name="vo.colId" value="$sort.colId"}selected="selected"{/eq} >{$sort.colTitle}</option>
+                                    {/if}
+                                {/volist}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>标题：</th>
+                        <td><input type="hidden" id="sortNameId" value="{$vo.colId}"/><input class="common-text" type="text" name="title" size="50" value="{$vo.title}"/></td>
+                    </tr>
+                    <tr>
+                        <th>作者：</th>
+                        <td><input class="common-text" type="text" name="author" size="50" value="{$vo.author}"/></td>
+                    </tr>
+                    <tr>
+                        <th>缩略图：</th>
+                        <td>
+                            {if condition="$vo.smallimg neq ''"}
+                                <img src="__PUBLIC__/uploads/{$vo.smallimg}" alt=""/>
+                                <br>
+                            {/if}
+                            <input type="file" name="smallimg" id=""/>
+                            <input type="hidden" name="smallimg" value="{$vo.smallimg}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>内容：</th>
+                        <td><textarea name="content" id="content" cols="30" style="width:98%;" rows="20">{$vo.content}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="hidden" name="id" value="{$vo.id}"/>
+                            <input class="btn btn-primary btn6 mr10" type="submit" value="提交"/>
+                            <input class="btn btn6" type="button" onclick="history.go(-1)" value="返回"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+{/block}
