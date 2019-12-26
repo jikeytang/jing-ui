@@ -267,11 +267,6 @@ class Common extends Controller {
         $M = db($modeName);
         $count = $M->where($where)->count();
         $lists = $M->where($where)->order($order)->paginate($pageSize);
-        // $p->setConfig('header', '条');
-        // $p->setConfig('prev', '上一页');
-        // $p->setConfig('next', '下一页');
-        // $p->setConfig('first', '<<');
-        // $p->setConfig('last', '>>');
 
         return array('lists' => $lists);
     }
